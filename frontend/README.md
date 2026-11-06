@@ -1,8 +1,6 @@
 # PhishCheck – front end
 
-React front end for the Phishing URL Detection System. See the
-[top-level README](../README.md) to run the whole application, and
-[SECURITY.md](../SECURITY.md) for the security design.
+React front end for the Phishing URL Detection System. 
 
 ## Scripts
 
