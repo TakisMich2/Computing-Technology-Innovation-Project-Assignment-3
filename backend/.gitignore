@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+
+# Only the final model is committed (0.3 MB, verified by MODEL_SHA256);
+# stand-ins and experiments stay local.
+models/*.joblib
+!models/MODEL_FINAL.joblib
+models/*.part
