@@ -1,28 +1,42 @@
-# PhishCheck – front end
+# PhishCheck Front End
 
-React front end for the Phishing URL Detection System. 
+This is the React app for PhishCheck. It lets you check a URL, see its trust
+score and any warning signs, and review or export your check history.
 
-## Scripts
+For instructions on running the full app, see the
+[main README](../README.md). For details about the security design, see
+[SECURITY.md](../SECURITY.md).
+
+## Getting started
+
+You'll need Node.js 22.12 or newer.
+
+```bash
+npm ci
+npm run dev
+```
+
+The development server will print a local address, usually
+http://localhost:5173. For live URL checks, start the back end as described in
+the main README; requests to `/api` are forwarded to it.
+
+To run a demo without the back end, use `npm run dev:mock` instead. It shows
+simulated results and displays a Demo mode banner. Entering a URL on
+`error.test` simulates a server error.
+
+## Useful commands
 
 | Command | What it does |
 |---|---|
-| `npm ci` | Install the exact versions in `package-lock.json` |
-| `npm run build` | Production build into `dist/`, served by the back end at http://127.0.0.1:8000 |
-| `npm run dev` | Dev server at http://localhost:5173, forwarding `/api` to the back end on port 8000 |
+| `npm ci` | Installs the project's locked dependencies |
+| `npm run dev` | Starts the development server |
+| `npm run dev:mock` | Starts the demo version without the back end |
+| `npm run build` | Builds the app into `dist/` for the back end to serve |
 
-Requires Node.js 22.12 or newer.
+## What's included
 
-## Where each requirement is met
-
-| Requirement | Where |
-|---|---|
-| Input validated before sending | `src/utils/validateUrl.js`, `src/components/UrlForm.jsx` (usability only; the back end re-validates everything) |
-| Result most prominent, with confidence | `src/components/ResultPanel.jsx`, `TrustGauge.jsx` |
-| Loading, success and error states | `src/pages/HomePage.jsx`, `src/components/StatusMessages.jsx` (including "server busy" for 503 and an early "server offline" notice from `GET /api/health`) |
-| 404 page | `src/pages/NotFoundPage.jsx` (any unknown address) |
-| Fallback page for unexpected errors | `src/components/ErrorBoundary.jsx` (try `/dev/crash` in dev) |
-| Visualisations (titles, labels, legends, tooltips) | `src/components/charts/`: model confidence, warnings by URL part, history trust scores |
-| Consistent design | Tokens at the top of `src/styles/global.css` |
-| Responsive | Breakpoints at 480/600/640/880 px; tested at phone and desktop widths |
-| Accessibility | Labelled inputs, AA contrast, skip link, focus rings, keyboard-navigable charts (`accessibilityLayer`), screen-reader summaries |
-| History and export (FR7/FR8) | `src/pages/HistoryPage.jsx`, `src/utils/history.js` |
+- URL checks with clear results, confidence scores, and plain-language warnings
+- Charts showing confidence, warning locations, and check history
+- A local history of your checks, with an option to export it
+- Responsive layouts and keyboard-accessible controls
+- Helpful loading and error messages, including when the back end is offline
