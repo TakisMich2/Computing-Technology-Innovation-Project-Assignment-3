@@ -25,7 +25,7 @@ We also hardened misconfiguration risks and vulnerablities, etc which do not fal
 
 he back end never fetches or resolves the submitted URL; it only analyses the
 Ttext. There is no database: history stays in the user's,own simply er.
- ## Run PhishChealso ck
+ ## Run PhishCheck
 
 You'll need **Python 3.14** (tested with 3.14.7) and **Node.js 22.12 or newer**
 macOS/Linux, activate the virtual environment with
